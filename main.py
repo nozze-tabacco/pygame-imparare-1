@@ -42,8 +42,7 @@ while True:
     uccello_vely +=0.3 * DIFFICOLTA
     uccelloy += uccello_vely
     numeri = []
-    #for nnn in numeri:
-    #    print(nnn)    
+  
 
     for event in pygame.event.get(): # get = prendi  set = imposta
         if (event.type == pygame.KEYDOWN and event.key == pygame.K_UP): # evento di tipo "tasto schiacciato" e tasto "freccia su"
