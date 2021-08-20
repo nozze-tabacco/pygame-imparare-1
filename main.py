@@ -3,7 +3,8 @@ import random
 
 pygame.init()
 
-sfondo=pygame.image.load('immagini/sfondo.png')
+sfondo=pygame.image.load('immagini/sfondo.png') # C:\Programmare\Python\pygame-imparare-1 + immagini/sfondo.png 
+#sfondo=pygame.image.load('c:/miei file/cartella1/alex//immagini/sfondo.png') percorso assoluto
 uccello=pygame.image.load('immagini/uccello.png')
 base=pygame.image.load('immagini/base.png')
 gameover=pygame.image.load('immagini/gameover.png')
