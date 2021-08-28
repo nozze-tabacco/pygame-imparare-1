@@ -1,4 +1,4 @@
-from _typeshed import Self
+#from _typeshed import Self
 import pygame, sys
 import random
 pygame.init()
@@ -23,14 +23,16 @@ class tubi_classe:
     def __init__(self):
         self.x = 300
         self.y = random.randint(-75,150)
+
 def avanza_e_disegna (self) :
     self.x -= VEL_AVANZ
     SCHERMO.blit(tubo_giu, (self.x,self.y+250))
     SCHERMO.blit(tubo_su, (self.x,self.y-210))
+
 def disegna_oggetti():    
      SCHERMO.blit(sfondo, (0,0) )
-     for t in tubi:
-         t.avanza_e_disegna()
+     for tubo in tubi:
+        tubo.avanza_e_disegna()
      SCHERMO.blit(uccello, (uccellox, uccelloy))
      SCHERMO.blit(base, (basex,400))
      
