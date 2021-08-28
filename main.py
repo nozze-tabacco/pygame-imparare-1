@@ -1,4 +1,4 @@
-#from _typeshed import Self
+#from _typeshed import self
 import pygame, sys
 import random
 pygame.init()
@@ -16,7 +16,7 @@ FPS=60/1
 FLY_UP = -10
 DIFFICOLTA = 2
 VEL_AVANZ= 3
-clock = pygame.time.Clock()
+clock = pygame.time.Clock()     
 
 
 class tubi_classe:
@@ -24,17 +24,17 @@ class tubi_classe:
         self.x = 300
         self.y = random.randint(-75,150)
 
-def avanza_e_disegna (self) :
-    self.x -= VEL_AVANZ
-    SCHERMO.blit(tubo_giu, (self.x,self.y+250))
-    SCHERMO.blit(tubo_su, (self.x,self.y-210))
+    def avanza_e_disegna (self) :
+        self.x -= VEL_AVANZ
+        SCHERMO.blit(tubo_giu, (self.x,self.y+250))
+        SCHERMO.blit(tubo_su, (self.x,self.y-210))
 
 def disegna_oggetti():    
-     SCHERMO.blit(sfondo, (0,0) )
-     for tubo in tubi:
+    SCHERMO.blit(sfondo, (0,0) )
+    for tubo in tubi:
         tubo.avanza_e_disegna()
-     SCHERMO.blit(uccello, (uccellox, uccelloy))
-     SCHERMO.blit(base, (basex,400))
+    SCHERMO.blit(uccello, (uccellox, uccelloy))
+    SCHERMO.blit(base, (basex,400))
      
 def aggiorna() :
     pygame.display.update()
@@ -68,21 +68,28 @@ inizzializza()
 while True:
     basex-= VEL_AVANZ
     if basex < -45: basex = 0
-    print(basex)
+
     uccello_vely +=0.3 * DIFFICOLTA
     uccelloy += uccello_vely
-    numeri = []
-  
+    print(f"y: {uccelloy}")
+    
+    # quando la y é piu di 380 lo rimettiamo a 380 (cosi non va sotto la base)
+    # se uccelloy é maggiore 380 allora: impostiamo uccelloy a 380
 
+    spiaccicato = False
+    if uccelloy > 380:
+        uccelloy = 380
+        spiaccicato = True    
+     
     for event in pygame.event.get(): # get = prendi  set = imposta
         if (event.type == pygame.KEYDOWN and event.key == pygame.K_UP): # evento di tipo "tasto schiacciato" e tasto "freccia su"
             uccello_vely = FLY_UP
         if event.type == pygame.QUIT:
             pygame.quit()
             sys.exit()
-        if uccelloy > 380:
-            hai_perso ()
-
 
     disegna_oggetti()
     aggiorna()
+
+    if spiaccicato:
+        hai_perso()
