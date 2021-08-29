@@ -13,7 +13,7 @@ tubo_su=pygame.transform.flip(tubo_giu,False,True)
 
 SCHERMO=pygame.display.set_mode((288,512))
 FPS=60/1
-FLY_UP = -10
+FLY_UP = -8
 DIFFICOLTA = 2
 VEL_AVANZ= 3
 clock = pygame.time.Clock()     
@@ -78,7 +78,7 @@ while True:
     # se uccelloy é maggiore 380 allora: impostiamo uccelloy a 380
 
     spiaccicato = False
-    if uccelloy > 380:
+    if uccelloy > 380:          
         uccelloy = 380
         spiaccicato = True    
      
@@ -92,7 +92,7 @@ while True:
         if uccelloy > 380:
             hai_perso ()
 
-    #if tubi [-1].x < 150: tubi.append(tubi_classe ())
+    if tubi [-1].x < 150: tubi.append(tubi_classe ())
 
     disegna_oggetti()
     aggiorna()
