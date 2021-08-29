@@ -24,17 +24,23 @@ class tubi_classe:
         self.x = 300
         self.y = random.randint(-75,150)
 
+    def avanza_e_disegna (self):
+        self.x -= VEL_AVANZ
+        SCHERMO.blit(tubo_giu, (self.x,self.y+250))
+        SCHERMO.blit(tubo_su, (self.x,self.y-210))
+
 def avanza_e_disegna (self) :
     self.x -= VEL_AVANZ
     SCHERMO.blit(tubo_giu, (self.x,self.y+250))
     SCHERMO.blit(tubo_su, (self.x,self.y-210))
 
 def disegna_oggetti():    
-     SCHERMO.blit(sfondo, (0,0) )
-     for tubo in tubi:
+    SCHERMO.blit(sfondo, (0,0) )
+    for tubo in tubi:
         tubo.avanza_e_disegna()
-     SCHERMO.blit(uccello, (uccellox, uccelloy))
-     SCHERMO.blit(base, (basex,400))
+
+    SCHERMO.blit(uccello, (uccellox, uccelloy))
+    SCHERMO.blit(base, (basex,400))
      
 def aggiorna() :
     pygame.display.update()
@@ -62,7 +68,7 @@ def hai_perso ():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-
+                
 inizzializza()
 
 while True:
@@ -83,6 +89,7 @@ while True:
         if uccelloy > 380:
             hai_perso ()
 
+    if tubi [-1].x < 150: tubi.append(tubi_classe ())
 
     disegna_oggetti()
     aggiorna()
