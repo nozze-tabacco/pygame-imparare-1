@@ -12,6 +12,7 @@ tubo_giu=pygame.image.load('immagini/tubo.png')
 tubo_su=pygame.transform.flip(tubo_giu,False,True)
 
 SCHERMO=pygame.display.set_mode((288,512))
+#SCHERMO=pygame.display.set_mode((640,512))
 FPS=60/1
 FLY_UP = -8
 DIFFICOLTA = 2
@@ -28,7 +29,25 @@ class tubi_classe:
         self.x -= VEL_AVANZ
         SCHERMO.blit(tubo_giu, (self.x,self.y+250))
         SCHERMO.blit(tubo_su, (self.x,self.y-210))
+    def collisione(self, uccello, uccellox , uccelloy):  
+        tolleranza = 2
+        uccello_lato_dx = uccellox + uccello.get_width()-tolleranza
+        uccello_lato_sx = uccellox + tolleranza
+        tubi_lato_dx = self.x + tubo_giu.get_width()
+        tubi_lato_sx = self.x
+        uccello_lato_su = uccelloy+tolleranza
+        uccello_lato_giu =uccelloy + uccello.get_height()#-tolleranza
+        tubi_lato_su = self.y+110
+        tubi_lato_giu =self.y+210
 
+        if uccello_lato_dx > tubi_lato_sx and uccello_lato_sx < tubi_lato_dx: 
+            if uccello_lato_su < tubi_lato_su or uccello_lato_giu > tubi_lato_giu:
+                print(f"uccello_lato_su: {uccello_lato_su}")
+                print(f"tubi_lato_su: {tubi_lato_su}")
+                print(f"uccello_lato_giu: {uccello_lato_giu}")
+                print(f"tubi_lato_giu: {tubi_lato_giu}")
+                
+                hai_perso ()
 def disegna_oggetti():    
     SCHERMO.blit(sfondo, (0,0) )
     for tubo in tubi:
@@ -93,7 +112,8 @@ while True:
             hai_perso ()
 
     if tubi [-1].x < 150: tubi.append(tubi_classe ())
-
+    for t in tubi:
+        t.collisione(uccello,uccellox,uccelloy)
     disegna_oggetti()
     aggiorna()
 
