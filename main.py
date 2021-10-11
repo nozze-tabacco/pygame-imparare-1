@@ -12,8 +12,8 @@ tubo_su = pygame.transform.flip(tubo_giu,False,True)
 
 SCHERMO = pygame.display.set_mode((288,512))
 FPS = 60/1
-FLY_UP = -8
-DIFFICOLTA = 2
+FLY_UP = -5
+DIFFICOLTA = 1
 VEL_AVANZ = 3
 clock = pygame.time.Clock()     
 
@@ -24,8 +24,9 @@ class tubi_classe:
 
     def avanza_e_disegna (self):
         self.x -= VEL_AVANZ
-        SCHERMO.blit(tubo_giu, (self.x, self.y+250))
-        SCHERMO.blit(tubo_su, (self.x, self.y-210))
+        SCHERMO.blit(tubo_giu, (self.x, self.y + 200))
+        SCHERMO.blit(tubo_su, (self.x, self.y - 210))
+        
 
     def collisione(self, uccello, uccellox, uccelloy):  
         tolleranza = 2
@@ -35,6 +36,11 @@ class tubi_classe:
         tubi_lato_sx = self.x
         uccello_lato_su = uccelloy + tolleranza
         uccello_lato_giu = uccelloy + uccello.get_height() - tolleranza
+
+        # disegnamo l'area dove sta il pennuto
+        color = (255,0,0)
+        pygame.draw.rect(SCHERMO, color, pygame.Rect(uccello_lato_sx, uccello_lato_su, uccello.get_width(), uccello.get_height()), 2)
+
         tubi_lato_su = self.y + 110
         tubi_lato_giu = self.y + 210
 
@@ -107,7 +113,7 @@ while True:
             sys.exit()
 
         if uccelloy > 380:
-            hai_perso ()
+            hai_perso()
 
     if tubi[-1].x < 150: tubi.append(tubi_classe())
     for t in tubi:
