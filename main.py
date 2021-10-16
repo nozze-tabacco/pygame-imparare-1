@@ -15,7 +15,7 @@ SCHERMO=pygame.display.set_mode((288,512))
 #SCHERMO=pygame.display.set_mode((640,512))
 FPS=60/1
 FLY_UP = -8
-DIFFICOLTA = 2
+DIFFICOLTA = 2.25
 VEL_AVANZ= 3
 clock = pygame.time.Clock()     
 
@@ -27,7 +27,7 @@ class tubi_classe:
 
     def avanza_e_disegna (self):
         self.x -= VEL_AVANZ
-        SCHERMO.blit(tubo_giu, (self.x,self.y+250))
+        SCHERMO.blit(tubo_giu, (self.x,self.y+200))
         SCHERMO.blit(tubo_su, (self.x,self.y-210))
     def collisione(self, uccello, uccellox , uccelloy):  
         tolleranza = 2
