@@ -15,9 +15,9 @@ altezza_schermo = 512
 
 SCHERMO = pygame.display.set_mode((288,altezza_schermo))
 FPS = 60/1
-FLY_UP = -5
+FLY_UP = -4.5
 DIFFICOLTA = 1
-VEL_AVANZ = 3
+VEL_AVANZ = 2.5
 clock = pygame.time.Clock()
 FONT = pygame.font.SysFont('Comic Sans MS', 25 , bold = True)     
 
