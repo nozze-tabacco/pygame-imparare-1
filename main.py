@@ -5,20 +5,23 @@ pygame.init()
 
 sfondo=pygame.image.load('immagini/sfondo.png') # C:\Programmare\Python\pygame-imparare-1 + immagini/sfondo.png 
 #sfondo=pygame.image.load('c:/miei file/cartella1/alex//immagini/sfondo.png') percorso assoluto
-uccello=pygame.image.load('immagini/uccello.png')
+uccello=pygame.image.load('immagini/mazinga z.png') # legge l'immagine e la usa per la variabile
 base=pygame.image.load('immagini/base.png')
 gameover=pygame.image.load('immagini/gameover.png')
-tubo_giu=pygame.image.load('immagini/tubo.png')
+tubo_giu=pygame.image.load('immagini/tubo z - Copia (2).png')
 tubo_su=pygame.transform.flip(tubo_giu,False,True)
 
-SCHERMO=pygame.display.set_mode((288,512))
+altezza_schermo= 512
+
+SCHERMO=pygame.display.set_mode((288,altezza_schermo))
 #SCHERMO=pygame.display.set_mode((640,512))
 FPS=60/1
-FLY_UP = -8
-DIFFICOLTA = 2.25
-VEL_AVANZ= 3
+FLY_UP = -7
+DIFFICOLTA = 2.22
+VEL_AVANZ=3
 clock = pygame.time.Clock()     
 
+FONT = pygame.font.SysFont('Comic Sans MS', 25 , bold = True)
 
 class tubi_classe:
     def __init__(self):
@@ -55,7 +58,8 @@ def disegna_oggetti():
 
     SCHERMO.blit(uccello, (uccellox, uccelloy))
     SCHERMO.blit(base, (basex,400))
-     
+    punteggio =FONT.render("0", 1 , (0,0,0))
+    SCHERMO.blit(punteggio,( 10, altezza_schermo - 50))
 def aggiorna() :
     pygame.display.update()
     clock.tick(FPS)
@@ -64,9 +68,11 @@ def inizzializza():
     global uccellox, uccelloy, uccello_vely  # definisco 3 variabili globali
     global basex
     global tubi
+    global punti
     uccellox, uccelloy = 60, 150  # imposto la posizione iniziale
     uccello_vely = 0       
     basex =0 
+    punti = 0
     tubi = []
     tubi.append(tubi_classe())
 

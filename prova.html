@@ -1,0 +1,50 @@
+<html>
+<head>
+<script>
+
+    function inizia() {
+        //alert("inizia la pagina")
+        mostraColore()
+    }
+
+    function impostaColore(pippo, pluto, paperino) {
+        document.getElementById("R").value = pippo
+        document.getElementById("G").value = pluto
+        document.getElementById("B").value = paperino
+        mostraColore()
+    }
+
+    function mostraColore() {
+        var red = document.getElementById("R").value
+        var green = document.getElementById("G").value
+        var blue = document.getElementById("B").value
+        //alert(`Rosso: ${rosso}`)
+        var nuovoColore = `rgb(${red},${green},${blue})`
+        document.getElementById("colore").style.backgroundColor = nuovoColore  // rgb(0, 0, 255)
+    }
+</script>
+</head>
+
+<body>
+
+colore: 
+<br />
+R: <input id="R" type="number" min="0" max="255"  step="10" value="0"  onchange="mostraColore()" /><br />
+G: <input id="G" type="number" min="0" max="255"  step="10" value="0"  onchange="mostraColore()" /><br />
+B: <input id="B" type="number" min="0" max="255"  step="10" value="0"  onchange="mostraColore()" /><br />
+<button onclick="impostaColore(255, 255, 255)">Bianco!</button>
+<button onclick="impostaColore(255, 80, 0)">Orange!</button>
+
+<div id="colore" style="width:200px; height:200px; border: 3px solid rgb(0, 0, 0); cursor: hand"></div>
+
+punteggio X: <input id="X" >
+punteggio Y: <input id="Y" >
+<div style="" >punteggio</div>
+
+
+
+<script>
+    inizia()
+</script>
+</body>
+</html>
